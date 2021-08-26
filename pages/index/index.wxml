@@ -1,13 +1,76 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-tab">
+        <view class="weui-navbar">
+            <block wx:for="{{categories}}" wx:key="{{index}}">
+                <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+                    <view class="weui-navbar__title">{{item}}</view>
+                </view>
+            </block>
+            <view class="weui-navbar__slider" style="width: {{sliderWidth}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+        </view>
+        <view class="weui-tab__panel">
+            <view class="weui-panel__bd" >
+              <block wx:for="{{snacks}}" wx:key="index" wx:for-item="snack">
+                
+                <view class="">
+                <navigator url="../snack/snack?id={{snack.snackId}}" class="snack_item" hover-class="weui-cell_active">
+                  <view class="weui-flex img-container">
+                    <block wx:for="{{snack.imgs}}"  wx:key="index" wx:for-item="img">
+                      <view class="weui-flex__item">
+                      <view class=" img-center">
+                        
+                          <image class="img-size" src="{{baseUrl}}/imgs/{{img}}" />
+                        </view>
+                      </view>
+                    </block>
+                  </view>
+                  <view class="weui-flex">
+                    <view class="weui-flex__item">
+                      <p class="border">
+                       {{snack.origin}}
+                      </p>
+                    </view>
+                    <view class="weui-flex__item text-right">
+                       <p  class="base-sale">最近的用户购买 </p>
+                    </view>
+                  </view>
+                  <view class="weui-flex" >
+                    <view class="weui-flex__item">
+                    {{snack.name}} {{snack.detail}}
+                    </view>
+                  </view>
+                  
+                  <view class="weui-flex" >
+                    <view class="weui-flex__item">
+                      <p class="red-font">￥</p>
+                      <p class="red-font big-font">{{snack.welfarePrice}} </p>  
+                      <p class="cancel-line">￥{{snack.marketPrice}}</p>  
+                      <p class="base-sale red-font">   已售{{snack.baseSale}}件</p>
+                    </view>
+                    <addsub count="{{cart[snack.snackId]['count']}}" bind:changeCnt="onChangeCnt" data-id="{{snack.snackId}}"></addsub>
+                    <!--
+                    <view class="weui-flex__item text-right">
+                      <block wx:if="{{cart[snack.snackId] == null || cart[snack.snackId]==0 }}" ></block>
+                      <block wx:else>
+                        <i class="fa fa-minus-circle fa-2x" aria-hidden="true"  style="color:green" data-id="{{snack.snackId}}" catchtap="cartSub"></i> 
+                        <p style="font-size:1.3em">  {{cart[snack.snackId]}}  </p>
+                      </block>
+                     
+                      <i class="fa fa-plus-circle fa-2x" aria-hidden="true"  style="color:green"  data-id="{{snack.snackId}}" catchtap="cartAdd"></i>
+                    </view>
+                    -->
+                  </view>
+                </navigator>
+                    
+                
+                </view>
+                
+              </block>
+            </view>
+            
+        </view>
+    </view>
   </view>
 </view>

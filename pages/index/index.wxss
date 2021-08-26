@@ -1,21 +1,122 @@
 /**index.wxss**/
-.userinfo {
+.snack_item{
+  padding: 1px 15px;
+  position: relative;
+}
+
+.img-container{
+  margin-top:8px;
+  vertical-align: top;
+}
+
+.img-center{
+  display:flex;
+  justify-content:center;
+}
+
+.img-size{
+  width: 70px; 
+  height: 70px;
+}
+
+.red-font{
+  color:red;
+}
+
+.big-font{
+  font-size:1.33em;
+}
+
+.base-sale{
+  font-size: 0.7em;
+}
+
+.text-right{
+  text-align: right;
+  margin-right: 10px;
+}
+
+.cancel-line{
+  text-decoration:line-through;
+  font-size:0.7em;
+  color:#999999
+}
+
+.border{
+  border-width:2px;
+  border-style: solid;
+  border-color:greenyellow;
+  font-size:0.6em;
+  color:green;
+}
+
+
+.cake-comment{
+  color: #999999;
+  display: inline-block;
+  height: 15px;
+  line-height:15px;
+  font-size: 13px;
+  margin-left: 10px;
+}
+
+.weui-media-box__price{
+  margin-right:.4em;
+  width:75px;
+  height:60px;
+  line-height:60px;
+  text-align:center;
+}
+
+.cake-price{
+  color: red;
+  font-size: 16px;
+  font-weight:300;
+}
+
+.weui-navbar__border {
+  display: -webkit-box;
+  display: -webkit-flex;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  position: absolute;
+  z-index: 500;
+  top: 0;
+  width: 100%;
+  border-bottom: 1rpx solid #CCCCCC;
 }
-
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.weui-navbar__item1 {
+  position: relative;
+  display: block;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  padding: 13px 0;
+  text-align: center;
+  font-size: 0;
 }
-
-.userinfo-nickname {
-  color: #aaa;
+.weui-navbar__item1.weui-bar__item_on1 {
+  color: #1AAD19;
 }
-
-.usermotto {
-  margin-top: 200px;
+.weui-navbar__slider1 {
+  position: absolute;
+  content: " ";
+  left: 0;
+  bottom: 0;
+  width: 6em;
+  height: 3px;
+  background-color: #1AAD19;
+  -webkit-transition: -webkit-transform .3s;
+  transition: -webkit-transform .3s;
+  transition: transform .3s;
+  transition: transform .3s, -webkit-transform .3s;
+}
+.weui-navbar__title1 {
+  display: inline-block;
+  font-size: 15px;
+  max-width: 8em;
+  width: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
 }

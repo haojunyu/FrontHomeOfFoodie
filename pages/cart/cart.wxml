@@ -1,0 +1,35 @@
+<view class="page">
+  <view class="page__bd">
+      <view class="weui-panel__bd">
+        <view wx:if="{{cartNum>0}}">
+            <block wx:for="{{cartArr}}" wx:key="index" wx:for-item="cart">
+              <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+                  <view class="weui-media-box__hd weui-media-box__hd_in-appmsg"  bindtap="goCakeDetail" data-uri='{{cart.id}}'>
+                      <image wx:if="{{cart.info.imgs[0]}}" class="weui-media-box__thumb" src="{{imgUrl}}{{cart.info.imgs[0]}}" />
+                  </view>
+                  <view class="weui-media-box__bd weui-media-box__bd_in-appmsg" bindtap="goCakeDetail" data-uri='{{order.cake.uri}}'>
+                    <view class="weui-media-box__title">{{order.cake.desc}}</view>
+                    <view class="weui-media-box__desc">单号:{{order.orderId}}</view>
+                  </view>
+                  <view class="weui-media-box__hd weui-media-box__opera">
+                    <view wx:if="{{status == 1}}">
+                      <button class="weui-btn" type="warn" disabled="true" size="mini">去消费</button>
+                    </view>
+                    <view wx:elif="{{status == 2}}">
+                      <button class="weui-btn" type="default"  bindtap="goComment" data-cakeid="{{order.cake.cakeId}}" data-orderid="{{order.orderId}}">去评价</button>
+                    </view>
+                    <view wx:elif="{{status ==3 }}">
+                      <button class="weui-btn" type="primary" disabled="true" size="mini">完成</button>
+                    </view>
+                    <view wx:else>
+                      <button class="weui-btn" type="warn"  disabled="true" size="mini">未知状态</button>
+                    </view>
+
+                  </view>
+              </view>
+            </block>
+        </view>
+        <view wx:else>当前购物车为空</view>
+      </view>
+  </view>
+</view>

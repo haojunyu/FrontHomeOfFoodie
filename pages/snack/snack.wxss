@@ -1,0 +1,100 @@
+/**snack.wxss**/
+
+.snack_image{
+  width: 100%;
+}
+
+.red-font{
+  color:red;
+}
+
+.big-font{
+  font-size:1.33em;
+}
+
+.cancel-line{
+  text-decoration:line-through;
+  font-size:0.7em;
+  color:#999999
+}
+
+.border{
+  border-width:2px;
+  border-style: solid;
+  border-color:greenyellow;
+  font-size:0.6em;
+  color:green;
+}
+
+
+
+.weui-media-box__price{
+  margin-right:.4em;
+  width:70px;
+  text-align:center;
+}
+
+.weui-media-box__order{
+  margin-right:.4em;
+  width:80px;
+  text-align:center;
+  vertical-align:middle;
+  display:table-cell;
+}
+
+
+.weui-cells__info{
+  margin-top: 0em;
+  margin-bottom: .3em;
+  color: #999999;
+  font-size: 14px;
+}
+
+.weui_affix{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  border-top: 3rpx solid #ddd;
+  height: 120rpx;
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.weui_affix .price{
+  color: #ff6633;
+  font-size: 44rpx;
+  margin-left: 25rpx;
+  font-weight: bold;
+}
+
+.weui_affix .buy{
+  background-color: #ff6633;
+  padding: 22rpx 34rpx;
+  color: #fff;
+  font-size: 30rpx;
+  margin-right: 20rpx;
+  border-radius: 4rpx;
+}
+
+
+  
+.weui-demo-dialog{
+  visibility:hidden;
+  opacity:0;
+  transition:all .3s;
+}
+.weui-half-screen-dialog{
+  transition:all .3s;
+  transform:translateY(100%);
+}
+.weui-demo-dialog_show{
+  visibility:visible;
+  opacity:1;
+}
+.weui-demo-dialog_show .weui-half-screen-dialog{
+    transform:translateY(0);
+}

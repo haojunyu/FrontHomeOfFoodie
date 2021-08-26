@@ -1,0 +1,99 @@
+<view class="page">
+  <view class="page__bd">
+    <swiper indicator-dots="true"
+    autoplay="true" interval="5000" duration="1000" class="banner">
+      <block wx:for="{{snackDetail.imgs}}" wx:key="index" wx:for-item="item">
+          <swiper-item>
+            <image wx:if='{{item}}' src="{{imgUrl}}{{item}}" mode="aspectFit" class="snack_image"/>
+          </swiper-item>
+      </block>
+    </swiper>
+
+    <view class="weui-media-box weui-media-box_text">
+      <h4 class="weui-media-box__title">
+        <p class="red-font">￥</p>
+        <p class="red-font big-font">{{snackDetail.welfarePrice}} </p>  
+        <p class="cancel-line">￥{{snackDetail.marketPrice}}</p>  
+        <p class="border">
+          {{snackDetail.origin}}
+        </p>
+      </h4>
+      <p class="weui-media-box__desc">{{snackDetail.name}} {{snackDetail.detail}}</p>
+      <ul class="weui-media-box__info">
+        <li class="weui-media-box__info__meta"> 销量: {{snackDetail.baseSale}}</li>
+      </ul>
+    </view>
+    
+
+    <view class="weui-cells weui-cells__info">
+        <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="locate">
+            <view class="weui-cell__hd">
+                <i class="fa fa-map-marker fa-lg" style="margin: 5px;vertical-align: middle;" aria-hidden="true"></i>
+            </view>
+            <view class="weui-cell__bd">{{location}}</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+        <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active" data-phone="{{phone}}" bindtap="call">
+            <view class="weui-cell__hd">
+                <i class="fa fa-mobile fa-lg" style="margin: 5px;vertical-align: middle;" aria-hidden="true"></i> 
+            </view>
+            <view class="weui-cell__bd" >{{phone}}</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+    </view>
+
+   
+
+    <view class='weui_affix'>
+      
+      <view style="display: inline-block;position: relative;" bindtap="jumpHome">
+          <image src="../../asset/imgs/home.png" alt="" class="weui-tabbar__icon"/>
+      </view>
+      <view style="display: inline-block;position: relative;" bindtap="jumpCart">
+          <image src="../../asset/imgs/cart-plus.png" alt="" class="weui-tabbar__icon"/>
+          <view wx:if='{{cartCount}}' class="weui-badge" style="position: absolute;top: -2px;right: -13px;">{{cartCount}}</view>
+      </view>
+          
+      <view class='buy' bindtap='openDialog'>加入购物车</view>
+    </view>
+
+    <view class="weui-demo-dialog {{istrue ? 'weui-demo-dialog_show' : ''}}">
+      <view class="weui-mask" bindtap="closeDialog"></view>
+      <view class="weui-half-screen-dialog" catchtap="stopEvent">
+        <view class="weui-half-screen-dialog__hd">
+          <view class="weui-half-screen-dialog__hd__side">
+            <view bindtap="closeDialog" class="weui-icon-btn weui-icon-btn_close">关闭</view>
+          </view>
+          <view class="weui-half-screen-dialog__hd__main">
+            <text class="weui-half-screen-dialog__title">加入购物车</text>
+          </view>
+          <view class="weui-half-screen-dialog__hd__side">
+            <view class="weui-icon-btn weui-icon-btn_more">更多</view>
+          </view>
+        </view>
+        
+        <view class="weui-half-screen-dialog__bd">
+          <view class="weui-media-box weui-media-box_appmsg">
+            <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                <image wx:if='{{firstImg}}'  class="weui-media-box__thumb" src="{{imgUrl}}{{firstImg}}" />
+            </view>
+            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+              <view class="weui-media-box__title">￥{{snackDetail.welfarePrice}}</view>
+              <view class="weui-media-box__desc">库存：xxx</view>
+            </view>
+          
+        </view>
+        
+
+          <view class="weui-half-screen-dialog__desc">
+            <addsub count="{{count}}" bind:changeCnt="onChangeCnt" data-id="{{snackId}}"></addsub>
+          </view>
+        </view>
+        <view class="weui-half-screen-dialog__ft">
+          <button type="primary" class="weui-btn" bindtap="addCart">加入购物车</button>
+        </view>
+      </view>
+    </view>
+       
+  </view>
+</view>

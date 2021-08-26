@@ -1,10 +1,19 @@
 //app.js
 App({
-  onLaunch: function () {
+  onLaunch: function (ops) {
+    console.log(ops)
+
+    //清空本地数据缓存
+    wx.clearStorageSync()
+    console.log('clear storeage......')
+
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
+    
+    // 购物车初始化
+    this.globalData.cart = {}
 
     // 登录
     wx.login({
@@ -12,9 +21,11 @@ App({
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
     })
+
     // 获取用户信息
     wx.getSetting({
       success: res => {
+        console.log(res.authSetting)
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
@@ -33,7 +44,29 @@ App({
       }
     })
   },
+  onShow:function(){
+    // 加载购物车信息
+    var storeCart = wx.getStorageSync('cart')
+    if (storeCart) {
+      console.log('app getStoreData[onLoad] storeCart')
+      this.globalData.cart =  storeCart
+    }else{
+      this.globalData.cart = {}
+    }
+  },
+  onHide:function(){
+    // 持久化购物车信息
+    var cart = this.globalData.cart
+    wx.setStorage({
+      key: "cart",
+      data: cart
+    })
+  },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    baseUrl: 'https://api.haojunyu.com',
+    token: null,
+    configs: null,
+    cart:{}
   }
 })

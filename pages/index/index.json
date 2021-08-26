@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "addsub": "../../components/addsub/addsub"
+  }
 }

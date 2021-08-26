@@ -1,0 +1,11 @@
+<!--component/addsub/addsub.wxml-->
+
+<view class="weui-flex__item text-right">
+  <block wx:if="{{count == null || count==0 }}" ></block>
+  <block wx:else>
+    <i class="fa fa-minus-circle fa-2x" aria-hidden="true"  style="color:green"  catchtap="cartSub"></i> 
+    <p style="font-size:1.3em">  {{count}}  </p>
+  </block>
+  
+  <i class="fa fa-plus-circle fa-2x" aria-hidden="true"  style="color:green"  catchtap="cartAdd"></i>
+</view>
